@@ -8,8 +8,9 @@ def chanceSpace():
     3) Advance to St. Charles Palace (First Pink)
     4) Advance to nearest Utility
     5) Advance to nearest Railroad 
-    6) Go back 3 spaces
-    7) Go to jail
+    6) Advance to Boardwalk
+    7) Go back 3 spaces
+    8) Go to jail
     """
 
 def treasureSpace():
