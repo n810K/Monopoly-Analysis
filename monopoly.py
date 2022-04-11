@@ -11,9 +11,17 @@ def chanceSpace():
     6) Advance to Boardwalk
     7) Go back 3 spaces
     8) Go to jail
+
+    There are 16 different Chance Cards
     """
 
-def treasureSpace():
 
+def chestSpace():
+    """
+    Movement Cards:
+    1) Advance to GO
+    2) Go to Jail
 
+    There are 16 different Community Chest Cards
+    """
 
