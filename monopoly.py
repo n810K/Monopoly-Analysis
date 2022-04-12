@@ -13,43 +13,39 @@ def chanceSpace():
     7) Advance to nearest Utility (12,28)
     8) Advance to nearest Railroad (5,15,25,35)
     
-
     There are 16 different Chance Cards
     """
     global globalPosition
 
     movementCards = {1 : 0, 2 : 24, 3 : 11, 4 : 39, 5 : 10}
-    print(movementCards[1])
-    chanceCard = 7 #random.randint(1,16)
-    print(chanceCard)
-
-    
-    
+    chanceCard = 8 #random.randint(1,16)
+    print(chanceCard) # Print selected chance card's index
 
     if chanceCard < 6:
         globalPosition = movementCards[chanceCard]
+
     elif chanceCard == 6:
         globalPosition -= 3
+
     elif chanceCard == 7:
-        # nearestUtility = [12-globalPosition, 28-globalPosition]
-        # positionDifference = min([i for i in nearestUtility if i >= 0])
-        # globalPosition += positionDifference
-        print("Global Position Before", globalPosition)
         if (globalPosition > 12 and globalPosition < 28):
             globalPosition = 28
             print("Between 12 and 28")
         elif (globalPosition > 28 or globalPosition < 12):
             globalPosition = 12
             print("Between 28 and 12")
+
     elif chanceCard == 8:
-        nearestRailroad = min(5-globalPosition, 15-globalPosition, 25-globalPosition, 35-globalPosition)
-        globalPosition = nearestRailroad
+        if (globalPosition > 5 and globalPosition < 15):
+            globalPosition = 15
+        elif (globalPosition > 15 and globalPosition < 25):
+            globalPosition = 25
+        elif (globalPosition > 25 and globalPosition < 35):
+            globalPosition = 35
+        elif (globalPosition > 35 or globalPosition < 5):
+            globalPosition = 5
 
     print("Updated Position:", globalPosition)
-
-
-
-
 
 def chestSpace():
     """
