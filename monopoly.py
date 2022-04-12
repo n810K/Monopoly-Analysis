@@ -31,7 +31,16 @@ def chanceSpace():
     elif chanceCard == 6:
         globalPosition -= 3
     elif chanceCard == 7:
-        #Need to find a way to move to the next position, same with railroad
+        # nearestUtility = [12-globalPosition, 28-globalPosition]
+        # positionDifference = min([i for i in nearestUtility if i >= 0])
+        # globalPosition += positionDifference
+        print("Global Position Before", globalPosition)
+        if (globalPosition > 12 and globalPosition < 28):
+            globalPosition = 28
+            print("Between 12 and 28")
+        elif (globalPosition > 28 or globalPosition < 12):
+            globalPosition = 12
+            print("Between 28 and 12")
     elif chanceCard == 8:
         nearestRailroad = min(5-globalPosition, 15-globalPosition, 25-globalPosition, 35-globalPosition)
         globalPosition = nearestRailroad
@@ -59,5 +68,5 @@ def diceRoll():
     return 
 
 if __name__ == "__main__":
-    globalPosition = 13
+    globalPosition = 29
     chanceSpace()
