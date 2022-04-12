@@ -18,16 +18,19 @@ def chanceSpace():
     global globalPosition
 
     movementCards = {1 : 0, 2 : 24, 3 : 11, 4 : 39, 5 : 10}
-    chanceCard = 8 #random.randint(1,16)
+    chanceCard = random.randint(1,16)
     print(chanceCard) # Print selected chance card's index
 
     if chanceCard < 6:
+        print("Chance Card: Move to board index", movementCards[chanceCard])
         globalPosition = movementCards[chanceCard]
 
     elif chanceCard == 6:
+        print("Chance Card: Move back 3 Spaces")
         globalPosition -= 3
 
     elif chanceCard == 7:
+        print("Chance Card: Advance to Nearest Utility")
         if (globalPosition > 12 and globalPosition < 28):
             globalPosition = 28
             print("Between 12 and 28")
@@ -36,6 +39,7 @@ def chanceSpace():
             print("Between 28 and 12")
 
     elif chanceCard == 8:
+        print("Chance Card: Advance to Nearest Railroad")
         if (globalPosition > 5 and globalPosition < 15):
             globalPosition = 15
         elif (globalPosition > 15 and globalPosition < 25):
@@ -58,11 +62,18 @@ def chestSpace():
     global globalPosition
     communityCard = random.randint(1,16)
 
+    if communityCard == 1:
+        print("Chest Card: Advance to GO")
+        globalPosition = 0
+    elif communityCard == 2:
+        print("Chest Card: Go to Jail")
+        globalPosition = 10
+
 def diceRoll():
-    # diceOne = 
-    # diceTwo = 
-    return 
+    diceOne = random.randint(1,6)
+    diceTwo = random.randint(1,6)
+    return (diceOne + diceTwo)
 
 if __name__ == "__main__":
-    globalPosition = 29
+    globalPosition = 0
     chanceSpace()
