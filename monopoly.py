@@ -77,7 +77,10 @@ def chestSpace():
 def diceRoll():
     diceOne = random.randint(1,6)
     diceTwo = random.randint(1,6)
-    return (diceOne + diceTwo)
+    double = False
+    if diceOne == diceTwo:
+        double = True # double is true 
+    return (double, (diceOne + diceTwo))
 
 def dictionarySetup():
     boardSpaces = {}
