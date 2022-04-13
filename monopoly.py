@@ -76,4 +76,4 @@ def diceRoll():
 
 if __name__ == "__main__":
     globalPosition = 0
-    chanceSpace()
+    
