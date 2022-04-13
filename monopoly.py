@@ -89,9 +89,15 @@ def dictionarySetup():
         boardSpaces[i] = 0
     return boardSpaces
 
+def diceRollStatisticsSetup():
+    diceRollStats = {}
+    for i in range(13):
+        diceRollStats[i] = 0
+    return diceRollStats
 
 if __name__ == "__main__":
     gameBoard = dictionarySetup()
+    diceRollStats = diceRollStatisticsSetup()
     print(gameBoard)
     equalFlag, rollResult = diceRoll()
     print(equalFlag, rollResult)
