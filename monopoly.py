@@ -1,6 +1,11 @@
 from glob import glob
 import random
 #40 Squares in Monopoly
+
+
+
+
+
 def chanceSpace():
     """
     Movement Cards:
@@ -74,6 +79,15 @@ def diceRoll():
     diceTwo = random.randint(1,6)
     return (diceOne + diceTwo)
 
+def dictionarySetup():
+    boardSpaces = {}
+    for i in range(40):
+        boardSpaces[i] = 0
+    return boardSpaces
+
+
 if __name__ == "__main__":
+    gameBoard = dictionarySetup()
+    print(gameBoard)
     globalPosition = 0
     
