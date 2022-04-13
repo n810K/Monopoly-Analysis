@@ -77,6 +77,7 @@ def chestSpace():
 def diceRoll():
     diceOne = random.randint(1,6)
     diceTwo = random.randint(1,6)
+    print("diceRolls:", diceOne, diceTwo)
     equalDice = False
     if diceOne == diceTwo:
         equalDice = True # double is true 
@@ -92,5 +93,7 @@ def dictionarySetup():
 if __name__ == "__main__":
     gameBoard = dictionarySetup()
     print(gameBoard)
+    equalFlag, rollResult = diceRoll()
+    print(equalFlag, rollResult)
     globalPosition = 0
     
