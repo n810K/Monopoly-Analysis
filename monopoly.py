@@ -93,11 +93,14 @@ def diceRollStatisticsSetup():
 if __name__ == "__main__":
     gameBoard = dictionarySetup()
     diceRollStats = diceRollStatisticsSetup()
-
+    turnCount = 0
+    tripleDoubles = [False, False, False]
     print(gameBoard)
     equalFlag, rollResult = diceRoll()
+    tripleDoubles[turnCount%3] = equalFlag
+    if (tripleDoubles[0] == True and len(set(tripleDoubles)) == 1): #Check that all items in the list are True
+        globalPosition = 10 # Move to jail since rolling 3 doubles in a row is speeding
 
-    #Create a list of past 3 rolls, then if all 3 are true, then send to jail. Have it on a rolling basis
     
 
     print(equalFlag, rollResult)
