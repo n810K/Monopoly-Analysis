@@ -1,10 +1,5 @@
-from glob import glob
 import random
 #40 Squares in Monopoly
-
-
-
-
 
 def chanceSpace():
     """
@@ -98,8 +93,14 @@ def diceRollStatisticsSetup():
 if __name__ == "__main__":
     gameBoard = dictionarySetup()
     diceRollStats = diceRollStatisticsSetup()
+
     print(gameBoard)
     equalFlag, rollResult = diceRoll()
+
+    #Create a list of past 3 rolls, then if all 3 are true, then send to jail. Have it on a rolling basis
+    
+
     print(equalFlag, rollResult)
     globalPosition = 0
     
+    #track previous roll, count up number of doubles in a row. If 3 doubles in a row, send to jail
