@@ -100,7 +100,11 @@ if __name__ == "__main__":
     tripleDoubles[turnCount%3] = equalFlag
     if (tripleDoubles[0] == True and len(set(tripleDoubles)) == 1): #Check that all items in the list are True
         globalPosition = 10 # Move to jail since rolling 3 doubles in a row is speeding
-
+        for i in range(3):
+            equalFlag, rollResult = diceRoll()
+            if equalFlag == True:
+                globalPosition += rollResult
+                break
     
 
     print(equalFlag, rollResult)
