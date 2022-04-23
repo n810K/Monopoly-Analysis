@@ -1,5 +1,4 @@
 import random
-import os 
 #40 Squares in Monopoly
 
 def chanceSpace():
@@ -21,7 +20,7 @@ def chanceSpace():
 
     movementCards = {1 : 0, 2 : 24, 3 : 11, 4 : 39}
     chanceCard = random.randint(1,16)
-    print(chanceCard) # Print selected chance card's index
+    print("Chance Random Roll:", chanceCard) # Print selected chance card's index
 
     if chanceCard < 5:
         print("Chance Card: Move to board index", movementCards[chanceCard])
@@ -41,23 +40,33 @@ def chanceSpace():
         print("Chance Card: Advance to Nearest Utility")
         if (globalPosition > 12 and globalPosition < 28):
             globalPosition = 28
-            print("Between 12 and 28")
+            print("Updated Position:", globalPosition)
+            return 1
         elif (globalPosition > 28 or globalPosition < 12):
             globalPosition = 12
-            print("Between 28 and 12")
+            print("Updated Position:", globalPosition)
+            return 1
 
     elif chanceCard == 8:
         print("Chance Card: Advance to Nearest Railroad")
         if (globalPosition > 5 and globalPosition < 15):
             globalPosition = 15
+            print("Updated Position:", globalPosition)
+            return 1
         elif (globalPosition > 15 and globalPosition < 25):
             globalPosition = 25
+            print("Updated Position:", globalPosition)
+            return 1
         elif (globalPosition > 25 and globalPosition < 35):
             globalPosition = 35
+            print("Updated Position:", globalPosition)
+            return 1
         elif (globalPosition > 35 or globalPosition < 5):
             globalPosition = 5
+            print("Updated Position:", globalPosition)
+            return 1
 
-    print("Updated Position:", globalPosition)
+    
 
 def chestSpace():
     """
@@ -114,7 +123,7 @@ if __name__ == "__main__":
     
     print(gameBoard)
 
-    simulationCount = int(input("How many rounds should we simulate? (Go to Go is 1 Round): "))
+    simulationCount = int(input("How many rounds should we simulate? (Go-Go is 1 Round): "))
     while (roundCount < simulationCount):
         chanceResult = False
         chestResult = False
@@ -136,10 +145,14 @@ if __name__ == "__main__":
         #print(tripleDoubles)
         
         if (globalPosition == 7 or globalPosition == 22 or globalPosition == 36):
+            print("Landed on Chance")
             chanceResult = chanceSpace()
+            gameBoard[globalPosition] += 1
 
         if (globalPosition == 2 or globalPosition == 17 or globalPosition == 33):
+            print("Landed on Community Chest")
             chestResult = chestSpace()
+            gameBoard[globalPosition] += 1
 
         if ((tripleDoubles[0] == True and len(set(tripleDoubles)) == 1) or chanceResult == True): #Check that all items in the list are True
             if (tripleDoubles[0] == True):
@@ -150,7 +163,7 @@ if __name__ == "__main__":
             for i in range(3):
                 equalFlag, rollResult = diceRoll()
                 turnCount += 1
-                print("Jail Roll", i, "", i)
+                print("Jail Roll", i, "", equalFlag)
                 if equalFlag == True:
                     globalPosition += rollResult
                     break
