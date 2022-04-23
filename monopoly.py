@@ -171,7 +171,7 @@ if __name__ == "__main__":
     print("Game Spread:", gameBoard)
     print("Roll Spread", diceRollStats)
     print("Exporting Game Board Data")
-    gameBoard[41] = turnCount
+    gameBoard[41] = inJailCount
     (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv('gameBoard_Results.csv', header=False))
     print("Exporting Dice Roll Data")
     (pd.DataFrame.from_dict(data=diceRollStats, orient='index').to_csv('diceRoll_Results.csv', header=False))
