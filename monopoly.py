@@ -1,5 +1,6 @@
 import random
 import pandas as pd
+import matplotlib.pyplot as plt
 #40 Squares in Monopoly
 
 def chanceSpace():
@@ -156,6 +157,7 @@ if __name__ == "__main__":
             gameBoard[globalPosition] += 1
 
         if ((tripleDoubles[0] == True and len(set(tripleDoubles)) == 1) or chanceResult == True): #Check that all items in the list are True
+            
             #print("Rolling from Jail")
             inJailCount += 1
             globalPosition = 10 # Move to jail since rolling 3 doubles in a row is speeding
