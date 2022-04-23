@@ -172,9 +172,11 @@ if __name__ == "__main__":
     print("Game Board Spread:", gameBoard)
     print("Dice Roll Spread", diceRollStats)
     print("Exporting Game Board Data")
-    gameBoard[41] = inJailCount
+
+    #Track number of times jail visits were as "inmates"
+    gameBoard[41] = inJailCount 
+
     (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv('gameBoard_Results.csv', header=False))
     print("Exporting Dice Roll Data")
     (pd.DataFrame.from_dict(data=diceRollStats, orient='index').to_csv('diceRoll_Results.csv', header=False))
     
-    #track previous roll, count up number of doubles in a row. If 3 doubles in a row, send to jail
