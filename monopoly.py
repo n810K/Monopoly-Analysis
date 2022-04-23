@@ -103,7 +103,7 @@ def diceRoll():
 
 def boardDictionarySetup():
     boardSpaces = {}
-    for i in range(41): #Space 41 will be IN jail 
+    for i in range(40): #Space 41 will be IN jail 
         boardSpaces[i] = 0
     return boardSpaces
 
@@ -174,7 +174,7 @@ if __name__ == "__main__":
     print("Exporting Game Board Data")
 
     #Track number of times jail visits were as "inmates"
-    gameBoard[41] = inJailCount 
+    gameBoard[40] = inJailCount 
 
     (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv('gameBoard_Results.csv', header=False))
     print("Exporting Dice Roll Data")
