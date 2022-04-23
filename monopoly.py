@@ -20,50 +20,50 @@ def chanceSpace():
 
     movementCards = {1 : 0, 2 : 24, 3 : 11, 4 : 39}
     chanceCard = random.randint(1,16)
-    print("Chance Random Roll:", chanceCard) # Print selected chance card's index
+    #print("Chance Random Roll:", chanceCard) # Print selected chance card's index
 
     if chanceCard < 5:
-        print("Chance Card: Move to board index", movementCards[chanceCard])
+        #print("Chance Card: Move to board index", movementCards[chanceCard])
         globalPosition = movementCards[chanceCard]
 
     elif chanceCard == 5:
-        print("Chance: Go to Jail")
+        #print("Chance: Go to Jail")
         globalPosition = 10
-        print("Updated Position:", globalPosition)
+        #print("Updated Position:", globalPosition)
         return True
 
     elif chanceCard == 6:
-        print("Chance Card: Move back 3 Spaces")
+        #print("Chance Card: Move back 3 Spaces")
         globalPosition -= 3
 
     elif chanceCard == 7:
-        print("Chance Card: Advance to Nearest Utility")
+        #print("Chance Card: Advance to Nearest Utility")
         if (globalPosition > 12 and globalPosition < 28):
             globalPosition = 28
-            print("Updated Position:", globalPosition)
+            #print("Updated Position:", globalPosition)
             return 1
         elif (globalPosition > 28 or globalPosition < 12):
             globalPosition = 12
-            print("Updated Position:", globalPosition)
+            #print("Updated Position:", globalPosition)
             return 1
 
     elif chanceCard == 8:
-        print("Chance Card: Advance to Nearest Railroad")
+        #print("Chance Card: Advance to Nearest Railroad")
         if (globalPosition > 5 and globalPosition < 15):
             globalPosition = 15
-            print("Updated Position:", globalPosition)
+            #print("Updated Position:", globalPosition)
             return 1
         elif (globalPosition > 15 and globalPosition < 25):
             globalPosition = 25
-            print("Updated Position:", globalPosition)
+            #print("Updated Position:", globalPosition)
             return 1
         elif (globalPosition > 25 and globalPosition < 35):
             globalPosition = 35
-            print("Updated Position:", globalPosition)
+            #print("Updated Position:", globalPosition)
             return 1
         elif (globalPosition > 35 or globalPosition < 5):
             globalPosition = 5
-            print("Updated Position:", globalPosition)
+            #print("Updated Position:", globalPosition)
             return 1
 
     
@@ -81,15 +81,15 @@ def chestSpace():
     communityCard = random.randint(1,16)
 
     if communityCard == 1:
-        print("Chest Card: Advance to GO")
+        #print("Chest Card: Advance to GO")
         globalPosition = 0
     elif communityCard == 2:
-        print("Chest Card: Go to Jail")
+        #print("Chest Card: Go to Jail")
         globalPosition = 10
-        print("Updated Position:", globalPosition)
+        #print("Updated Position:", globalPosition)
         return True #Indicate sent to jail
     
-    print("Updated Position:", globalPosition)
+    #print("Updated Position:", globalPosition)
 
 def diceRoll():
     diceOne = random.randint(1,6)
@@ -145,25 +145,23 @@ if __name__ == "__main__":
         #print(tripleDoubles)
         
         if (globalPosition == 7 or globalPosition == 22 or globalPosition == 36):
-            print("Landed on Chance")
+            #print("Landed on Chance")
             chanceResult = chanceSpace()
             gameBoard[globalPosition] += 1
 
         if (globalPosition == 2 or globalPosition == 17 or globalPosition == 33):
-            print("Landed on Community Chest")
+            #print("Landed on Community Chest")
             chestResult = chestSpace()
             gameBoard[globalPosition] += 1
 
         if ((tripleDoubles[0] == True and len(set(tripleDoubles)) == 1) or chanceResult == True): #Check that all items in the list are True
-            if (tripleDoubles[0] == True):
-                print("Speeding, Sent to Jail")
-            print("Rolling from Jail")
+            #print("Rolling from Jail")
             inJailCount += 1
             globalPosition = 10 # Move to jail since rolling 3 doubles in a row is speeding
             for i in range(3):
                 equalFlag, rollResult = diceRoll()
                 turnCount += 1
-                print("Jail Roll", i, "", equalFlag)
+                #print("Jail Roll", i, "", equalFlag)
                 if equalFlag == True:
                     globalPosition += rollResult
                     break
