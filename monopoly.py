@@ -167,9 +167,10 @@ if __name__ == "__main__":
                     globalPosition += rollResult
                     break
 
-    print("Simulation Complete")
-    print("Game Spread:", gameBoard)
-    print("Roll Spread", diceRollStats)
+    print("----Simulation Complete----")
+    print("Turns:", turnCount)
+    print("Game Board Spread:", gameBoard)
+    print("Dice Roll Spread", diceRollStats)
     print("Exporting Game Board Data")
     gameBoard[41] = inJailCount
     (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv('gameBoard_Results.csv', header=False))
