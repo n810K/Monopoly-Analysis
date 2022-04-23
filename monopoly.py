@@ -1,4 +1,5 @@
 import random
+import pandas as pd
 #40 Squares in Monopoly
 
 def chanceSpace():
@@ -169,5 +170,9 @@ if __name__ == "__main__":
     print("Simulation Complete")
     print("Game Spread:", gameBoard)
     print("Roll Spread", diceRollStats)
+    print("Exporting gameBoard Data")
+    (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv('gameBoard_Results.csv', header=False))
+    print("Exporting diceRoll Data")
+    (pd.DataFrame.from_dict(data=diceRollStats, orient='index').to_csv('diceRoll_Results.csv', header=False))
     
     #track previous roll, count up number of doubles in a row. If 3 doubles in a row, send to jail
