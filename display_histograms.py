@@ -72,7 +72,7 @@ if DEBUG["global"]:
 
 
 #== read diceRoll and gameBoard results ==# 
-analyse_dir = os.path.join(PATH, "analyse")
+analyse_dir = os.path.join(PATH, "Analyze")
 csv_files = list(filter(lambda f: f.endswith('.csv'), os.listdir(analyse_dir)))
 
 diceRollFile = None
