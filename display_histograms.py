@@ -7,7 +7,7 @@ import pandas as pd
 #== Global Variables ==#
 DEBUG = {               #turn off debugging outputs
             "global": 0,
-            "read": 1,
+            "read": 0,
             "histogram": 0,
 
 
@@ -15,6 +15,52 @@ DEBUG = {               #turn off debugging outputs
 
 PATH = os.getcwd()
 SIMCOUNT = 100
+
+labels = [
+            "Go",
+            "Medit.",
+            "C. Chest",
+            "Baltic",
+            "I. Tax",
+            "R. Railroad",
+            "Oriental",
+            "Chance",
+            "Vermont",
+            "Connecticut",
+            "Just Visiting",
+            "St. Charles",
+            "Electric Company",
+            "States",
+            "Virginia",
+            "Pennsylvania Railroad",
+            "St. James",
+            "Community Chest",
+            "Tennessee",
+            "New York",
+            "Free Parking",
+            "Kentucky",
+            "Chance",
+            "Indiana",
+            "Illinois",
+            "B. & O. Railroad",
+            "Atlantic",
+            "Ventnor",
+            "Water Works",
+            "Marvin Gardens",
+            "Go to Jail",
+            "Pacific",
+            "North Carolina",
+            "Community Chest",
+            "Pennsylvania",
+            "Short Line",
+            "Chance",
+            "Park Place",
+            "Luxury Tax"
+            "Boardwalk",
+            "In Jail"
+         ]
+
+
 
 if DEBUG["global"]:
     print(f"PATH: {PATH}")
@@ -35,6 +81,8 @@ for file in csv_files:
 
 diceRoll = pd.read_csv(os.path.join(PATH, diceRollFile), names=["value","frequency"])
 gameBoard = pd.read_csv(os.path.join(PATH, gameBoardFile), names=["space","frequency"])
+
+# gameBoard.insert(0, "name", labels)
 
 if DEBUG["read"]:
     print(diceRollFile)
@@ -57,13 +105,22 @@ sns.set(style="darkgrid")
 # assuming filenames -> type_results_x_rounds_x_turns.csv
 turnsCount = file.split(".")[0].split("_")[4]
 
+
 if DEBUG["histogram"]:
-    print(f"turnCountDice: {turnCountDice}, turnCountSpace: {turnCountSpace}")
+    print(f"turnsCount: {turnsCount}")
+
+fig, (ax1, ax2) = plt.subplots(1,2)
+
+ax1.bar(diceRoll["value"], diceRoll["frequency"])
+ax1.set_title("Dice Rolls")
+ax1.set_xticklabels(range(0,13,1))
+
+#== generate game board histogram ==#
 
 
-plt.bar(diceRoll["value"], diceRoll["frequency"])
-plt.title(f"Dice Rolls after {turnsCount} turns")
-plt.xticks(range(0,13,1))
+ax2.bar(gameBoard["space"], gameBoard["frequency"])
+ax2.set_title("Spaces")
+
+fig.suptitle(f"Frequencies After {turnsCount} Turns")
+
 plt.show()
-
-
