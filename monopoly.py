@@ -177,7 +177,7 @@ if __name__ == "__main__":
     #Track number of times jail visits were as "inmates"
     gameBoard[40] = inJailCount 
 
-    (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv(f'gameBoard_Results_{simulationCount}_rounds.csv', header=False))
+    (pd.DataFrame.from_dict(data=gameBoard, orient='index').to_csv(f'gameBoard_Results_{simulationCount}_rounds_{turnCount}_turns.csv', header=False))
     print("Exporting Dice Roll Data")
-    (pd.DataFrame.from_dict(data=diceRollStats, orient='index').to_csv(f'diceRoll_Results_{simulationCount}_rounds.csv', header=False))
+    (pd.DataFrame.from_dict(data=diceRollStats, orient='index').to_csv(f'diceRoll_Results_{simulationCount}_rounds_{turnCount}_turns.csv', header=False))
     
