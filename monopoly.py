@@ -193,6 +193,9 @@ if __name__ == "__main__":
     boardStats[40] = visitCount 
     boardStats[41] = inJailCount
 
+    if not os.path.exists('Results'):
+        os.mkdir("Results")
+
     print("Exporting Game Board Data")
     (pd.DataFrame.from_dict(data=boardStats, orient='index').to_csv(f'gameBoard_Results_{simulationCount}_rounds_{turnCount}_turns.csv', header=False))
     print("Exporting Dice Roll Data")

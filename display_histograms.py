@@ -10,8 +10,6 @@ DEBUG = {               #turn off debugging outputs
             "global": 1,
             "read": 1,
             "histogram": 0,
-
-
         }   
 
 PATH = os.getcwd()
