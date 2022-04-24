@@ -1,3 +1,4 @@
+import sys
 import random
 import pandas as pd
 #40 Squares in Monopoly
@@ -122,9 +123,14 @@ if __name__ == "__main__":
     inJailCount = 0
     tripleDoubles = [False, False, False]
     
-    print(gameBoard)
+    # print(gameBoard)
 
-    simulationCount = int(input("How many rounds should we simulate? (Go-Go is 1 Round): "))
+    if len(sys.argv) <= 1:
+        print("[ERROR]: Missing Simulation count in command line.\n          Format: ./monopoly.py <simulation count>")
+        quit()
+
+    simulationCount = int(sys.argv[1])
+    
     while (roundCount < simulationCount):
         chanceResult = False
         chestResult = False

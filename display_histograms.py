@@ -35,12 +35,12 @@ labels = [
             "Connecticut",
             "Just Visiting",
             "St. Charles",
-            "Electric Company",
+            "El. Company",
             "States",
             "Virginia",
-            "Pennsylvania Railroad",
+            "Penns Railroad",
             "St. James",
-            "Community Chest (1)",
+            "C. Chest (1)",
             "Tennessee",
             "New York",
             "Free Parking",
@@ -48,7 +48,7 @@ labels = [
             "Chance (1)",
             "Indiana",
             "Illinois",
-            "B. & O. Railroad",
+            "B&O Railroad",
             "Atlantic",
             "Ventnor",
             "Water Works",
@@ -56,7 +56,7 @@ labels = [
             "Go to Jail",
             "Pacific",
             "North Carolina",
-            "Community Chest (2)",
+            "C. Chest (2)",
             "Pennsylvania",
             "Short Line",
             "Chance (2)",
@@ -120,6 +120,7 @@ fig, (ax1, ax2) = plt.subplots(2)
 
 ax1.bar(diceRoll["value"], diceRoll["frequency"])
 ax1.set_title("Dice Rolls")
+ax1.set_xticks(range(0,13,1))
 ax1.set_xticklabels(range(0,13,1))
 
 #== generate game board histogram ==#
@@ -128,7 +129,7 @@ ax1.set_xticklabels(range(0,13,1))
 ax2.bar(gameBoard["space"], gameBoard["frequency"])
 ax2.set_title("Spaces")
 ax2.set_xticks(range(0,41,1))
-ax2.set_xticklabels(gameBoard["name"], rotation=-90, fontsize=6)
+ax2.set_xticklabels(gameBoard["name"], rotation=-90, fontsize=8)
 fig.suptitle(f"Frequencies After {turnsCount} Turns")
 
 fig.set_size_inches(14, 9)
