@@ -7,8 +7,8 @@ import pandas as pd
 
 #== Global Variables ==#
 DEBUG = {               #turn off debugging outputs
-            "global": 0,
-            "read": 0,
+            "global": 1,
+            "read": 1,
             "histogram": 0,
 
 
@@ -74,29 +74,40 @@ if DEBUG["global"]:
 
 
 #== read diceRoll and gameBoard results ==# 
-csv_files = list(filter(lambda f: f.endswith('.csv'), os.listdir(PATH)))
+analyse_dir = os.path.join(PATH, "analyse")
+csv_files = list(filter(lambda f: f.endswith('.csv'), os.listdir(analyse_dir)))
 
 diceRollFile = None
 gameBoardFile = None
 
+simCountString = f"_{SIMCOUNT}_"
+
 for file in csv_files:
-    if (diceRollFile == None) and ("diceRoll_Results" in file) and (str(SIMCOUNT) in file):
+    if (diceRollFile == None) and ("diceRoll_Results" in file) and (simCountString in file):
         diceRollFile = file
 
-    elif (gameBoardFile == None) and ("gameBoard_Results" in file) and (str(SIMCOUNT) in file):
+    elif (gameBoardFile == None) and ("gameBoard_Results" in file) and (simCountString in file):
         gameBoardFile = file
 
-diceRoll = pd.read_csv(os.path.join(PATH, diceRollFile), names=["value","frequency"])
-gameBoard = pd.read_csv(os.path.join(PATH, gameBoardFile), names=["space","frequency"])
+if not diceRollFile:
+    print("diceRollFile not found")
+    quit()
+
+if not gameBoardFile:
+    print("gameBoardFile not found")
+    quit()
+
+diceRoll = pd.read_csv(os.path.join(analyse_dir, diceRollFile), names=["value","frequency"])
+gameBoard = pd.read_csv(os.path.join(analyse_dir, gameBoardFile), names=["space","frequency"])
 
 gameBoard.insert(0, "name", labels)
 
 if DEBUG["read"]:
+    print(analyse_dir)
+    print(csv_files)
     print(diceRollFile)
     print(gameBoardFile)
-    print('\n')
     print(diceRoll)
-    print('\n')
     print(gameBoard)
 
 #=========================================#
