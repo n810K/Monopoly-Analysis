@@ -1,9 +1,8 @@
 from multiprocessing.dummy import current_process
 import sys
 import random
-from turtle import update
-from numpy import equal, roll
 import pandas as pd
+import os
 #40 Squares in Monopoly
 
 def chanceSpace(currentPosition):
