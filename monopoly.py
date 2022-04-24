@@ -153,7 +153,8 @@ if __name__ == "__main__":
             jailFlag, updatedPosition = chanceSpace(globalPosition)
             if (currentPosition != updatedPosition):
                 globalPosition = updatedPosition
-                boardStats[globalPosition] += 1
+                if (jailFlag == False):
+                    boardStats[globalPosition] += 1
 
 
         if (globalPosition == 2 or globalPosition == 17 or globalPosition == 33): #Chest Cards
@@ -161,7 +162,8 @@ if __name__ == "__main__":
             jailFlag, updatedPosition = chestSpace(globalPosition)
             if (currentPosition != updatedPosition):
                 globalPosition = updatedPosition
-                boardStats[globalPosition] += 1
+                if (jailFlag == False):
+                    boardStats[globalPosition] += 1
         
         if (globalPosition == 30):
             globalPosition = 10
@@ -186,7 +188,10 @@ if __name__ == "__main__":
     print("Dice Roll Spread", diceStats)
 
     #Track number of times jail visits were as "inmates"
-    boardStats[40] = inJailCount 
+    visitCount = boardStats[10]
+    boardStats[10] = visitCount + inJailCount
+    boardStats[40] = visitCount 
+    boardStats[41] = inJailCount
 
     print("Exporting Game Board Data")
     (pd.DataFrame.from_dict(data=boardStats, orient='index').to_csv(f'gameBoard_Results_{simulationCount}_rounds_{turnCount}_turns.csv', header=False))

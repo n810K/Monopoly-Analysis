@@ -33,7 +33,7 @@ labels = [
             "Chance (0)",
             "Vermont",
             "Connecticut",
-            "Just Visiting",
+            "Jail + Visiting", #Just Visiting
             "St. Charles",
             "El. Company",
             "States",
@@ -63,6 +63,7 @@ labels = [
             "Park Place",
             "Luxury Tax",
             "Boardwalk",
+            "Just Visiting",
             "In Jail"
          ]
 
@@ -110,7 +111,7 @@ sns.set(style="darkgrid")
 #== generate dice roll histogram ==#
 # assuming filenames -> type_results_x_rounds_x_turns.csv
 turnsCount = file.split(".")[0].split("_")[4]
-
+roundsCount = file.split(".")[0].split("_")[2]
 
 if DEBUG["histogram"]:
     print(f"turnsCount: {turnsCount}")
@@ -128,9 +129,16 @@ ax1.set_xticklabels(range(0,13,1))
 
 ax2.bar(gameBoard["space"], gameBoard["frequency"])
 ax2.set_title("Spaces")
-ax2.set_xticks(range(0,41,1))
+ax2.set_xticks(range(0,42,1))
 ax2.set_xticklabels(gameBoard["name"], rotation=-90, fontsize=8)
 fig.suptitle(f"Frequencies After {turnsCount} Turns")
 
 fig.set_size_inches(14, 9)
+
+if not os.path.exists('Results'):
+    os.mkdir("Results")
+
+plt.savefig(f"Results/Monopoly Analysis Results - {roundsCount}.png")
+
 plt.show()
+
